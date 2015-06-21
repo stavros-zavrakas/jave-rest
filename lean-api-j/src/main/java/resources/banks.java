@@ -5,13 +5,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
  
-@Path("/users")
-public class users {
+@Path("/banks")
+public class banks {
  
     @GET
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public String test() {
-        return "users";
+        return "banks";
     }
 }
