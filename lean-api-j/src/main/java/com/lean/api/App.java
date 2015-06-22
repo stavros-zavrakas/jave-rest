@@ -3,9 +3,14 @@ package com.lean.api;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import org.glassfish.jersey.jackson.JacksonFeature;
+import org.glassfish.jersey.server.ResourceConfig;
 
 public class App {
 	public static void main(String[] args) throws Exception {
+		ResourceConfig config = new ResourceConfig();
+		config.register(JacksonFeature.class);
+		
 		ServletContextHandler context = new ServletContextHandler(
 		    ServletContextHandler.SESSIONS);
 		
