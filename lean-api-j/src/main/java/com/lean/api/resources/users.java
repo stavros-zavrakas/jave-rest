@@ -1,4 +1,4 @@
-package resources;
+package com.lean.api.resources;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
