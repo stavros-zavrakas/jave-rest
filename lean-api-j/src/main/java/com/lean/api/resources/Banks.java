@@ -6,7 +6,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @Path("/banks")
-public class banks {
+public class Banks {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

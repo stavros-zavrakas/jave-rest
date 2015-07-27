@@ -11,16 +11,20 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.lean.api.services.UsersService;
+
 // @todo: how to handle parse errors:
 // http://stackoverflow.com/questions/14853939/how-to-handle-parser-exceptions-during-unmarshalling-of-json-data
 
 @Path("/users")
-public class users {
+public class Users {
+
+	UsersService usersService = new UsersService();
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getUsers() {
-		return "users";
+	public Response getUsers() {
+		return Response.ok(usersService.getAllUsers()).build();
 	}
 
 	// how to consume JSON objects.
