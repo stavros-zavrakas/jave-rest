@@ -4,9 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -27,6 +30,13 @@ public class Users {
 		return Response.ok(usersService.getAllUsers()).build();
 	}
 
+	@GET
+	@Path("/{userId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getUser(@PathParam("userId") int userId) {
+		return Response.ok(usersService.getUser(userId)).build();
+	}
+
 	// how to consume JSON objects.
 	// @see:
 	// http://examples.javacodegeeks.com/enterprise-java/rest/jersey/json-example-with-jersey-jackson/
@@ -43,6 +53,24 @@ public class Users {
 		res.put("firstName", firstName);
 		res.put("lastName", lastName);
 
-		return Response.ok(res).build();
+		return Response.ok(usersService.addUser(res)).build();
+	}
+
+	@PUT
+	@Path("/{userId}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response updateUser(@PathParam("userId") Long userId, Map<String, Object> bodyMap) {
+		bodyMap.put("id", userId);
+		
+		return Response.ok(usersService.updateUser(bodyMap)).build();
+	}
+
+	@DELETE
+	@Path("/{userId}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public void deleteUser(@PathParam("userId") Long userId) {
+		usersService.deleteUser(userId);
 	}
 }

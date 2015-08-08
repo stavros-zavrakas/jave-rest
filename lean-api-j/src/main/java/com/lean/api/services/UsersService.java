@@ -35,16 +35,19 @@ public class UsersService {
 	}
 
 	public Object addUser(Map<String, Object> user) {
-		users.put((long) (users.size() + 1), user);
+		long id = (long) (users.size() + 1);
+		user.put("id", id);
+		users.put(id, user);
 		return user;
 	}
 
 	public Object updateUser(Map<String, Object> user) {
-		if ((Long) user.get("id") <= 0) {
+		Long id = (Long) user.get("id");
+		if (id <= 0) {
 			return null;
 		}
 
-		users.put((Long) (user.get("id")), user);
+		users.put(id, user);
 		return user;
 	}
 
