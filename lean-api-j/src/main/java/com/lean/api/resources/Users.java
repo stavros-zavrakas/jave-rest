@@ -3,6 +3,7 @@ package com.lean.api.resources;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -14,6 +15,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.lean.api.resources.beans.UserFilterBean;
 import com.lean.api.services.UsersService;
 
 // @todo: how to handle parse errors:
@@ -26,7 +28,10 @@ public class Users {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getUsers() {
+	public Response getUsers(@BeanParam UserFilterBean filterBean) {
+		System.out.println(filterBean.getPage());
+		System.out.println(filterBean.getSize());
+
 		return Response.ok(usersService.getAllUsers()).build();
 	}
 
@@ -60,9 +65,10 @@ public class Users {
 	@Path("/{userId}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updateUser(@PathParam("userId") Long userId, Map<String, Object> bodyMap) {
+	public Response updateUser(@PathParam("userId") Long userId,
+	    Map<String, Object> bodyMap) {
 		bodyMap.put("id", userId);
-		
+
 		return Response.ok(usersService.updateUser(bodyMap)).build();
 	}
 
