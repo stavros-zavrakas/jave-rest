@@ -2,7 +2,7 @@ package com.lean.api.resources.beans;
 
 import javax.ws.rs.QueryParam;
 
-public class UserFilterBean {
+public class PaginationFilterBean {
 
 	private @QueryParam("page") int page;
 	private @QueryParam("size") int size;

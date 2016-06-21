@@ -12,8 +12,12 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<hibernate.version>4.3.6.Final</hibernate.version>
+	<mysql.version>5.1.31</mysql.version>
+	<joda-time.version>2.3</joda-time.version>
   </properties>
 
+  <!-- @todo: move all the version to the properties above -->
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -51,13 +55,29 @@
       <artifactId>jersey-json</artifactId>
       <version>1.19</version>
     </dependency>
+     <!-- Hibernate -->
+     <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-core</artifactId>
+         <version>${hibernate.version}</version>
+     </dependency>
     <dependency>
       <groupId>postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <version>9.1-901-1.jdbc4</version>
     </dependency>
-
-
+     <!-- Joda-Time -->
+     <dependency>
+         <groupId>joda-time</groupId>
+         <artifactId>joda-time</artifactId>
+         <version>${joda-time.version}</version>
+     </dependency>
+     <!-- To map JodaTime with database type -->
+     <dependency>
+         <groupId>org.jadira.usertype</groupId>
+         <artifactId>usertype.core</artifactId>
+         <version>3.0.0.CR1</version>
+     </dependency>
 
   </dependencies>
 

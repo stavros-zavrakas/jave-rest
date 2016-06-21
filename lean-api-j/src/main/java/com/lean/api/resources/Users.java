@@ -15,7 +15,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.lean.api.resources.beans.UserFilterBean;
+import com.lean.api.resources.beans.PaginationFilterBean;
 import com.lean.api.services.UsersService;
 
 // @todo: how to handle parse errors:
@@ -28,7 +28,7 @@ public class Users {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getUsers(@BeanParam UserFilterBean filterBean) {
+	public Response getUsers(@BeanParam PaginationFilterBean filterBean) {
 		System.out.println(filterBean.getPage());
 		System.out.println(filterBean.getSize());
 
